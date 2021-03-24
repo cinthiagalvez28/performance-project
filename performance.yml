@@ -1,0 +1,53 @@
+config:
+  plugins:
+    faker:
+      locale: en
+  target: "https://api.todoist.com"
+  phases:
+    - duration: 10
+      arrivalRate: 3
+      name: "Phase 1"
+  variables:
+    TASKURL:
+      - "/rest/v1/tasks"
+    content:
+      - "$faker.commerce.productMaterial"
+    due_string:
+      - "$faker.date.weekday"
+  defaults:
+    headers:
+      Authorization: Bearer {{ $processEnvironment.TOKEN }}
+      Content-type: application/json
+scenarios:
+  - name: "Create a task, get a task, get active tasks, update a task, close a task, reopen a task and delete a task."
+    flow:
+      - post:
+          url: "{{ TASKURL }}"
+          json:
+            content: "{{ content }}"
+            due_string: "{{ due_string }}"
+          capture:
+            json: "$.id"
+            as: "idTask"
+      - log: "Creating task: Task ID {{ idTask }}"
+      - get:
+          url: "{{ TASKURL }}/{{ idTask }}"
+      - log: "Getting a task: Task ID {{ idTask }}"
+      - get:
+          url: "{{ TASKURL }}"
+      - log: "Getting active tasks"
+      - post:
+          url: "{{ TASKURL }}/{{ idTask }}"
+          json:
+            content: "{{ content }}"
+            due_string: "{{ due_string }}"
+      - log: "Updating task: Task ID {{ idTask }}"
+      - post:
+          url: "{{ TASKURL }}/{{ idTask }}/close"
+      - log: "Closing a task: Task ID {{ idTask }}"
+      - post:
+          url: "{{ TASKURL }}/{{ idTask }}/reopen"
+      - log: "Reopening a task: Task ID {{ idTask }}"
+      - delete:
+          url: "{{ TASKURL }}/{{ idTask }}"
+      - log: "Deleting a task: Task ID {{ idTask }}"
