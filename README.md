@@ -35,3 +35,5 @@ Now, you are set up to run all the performance test. Run in the terminal:
 npm run test
 ```
 This command will initialize all the performance test, and will create a report.html in the reports folder of the project. A report is also included in case you don't want to run the test. To visualize the report just open the html file on chrome and enjoy!
+
+** This project was developed on Ubuntu 20.04
