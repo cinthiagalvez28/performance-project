@@ -17,7 +17,7 @@ The purpose of these tests involves the API task module of the Todoist website. 
 
 Download the zip, unzipped the content, open your favorite IDE and open the project folder. Once inside, open a new terminal and type:
 ```
-npm i artillery
+npm install artillery
 ```
 
 Also, install the faker.js plugin:
