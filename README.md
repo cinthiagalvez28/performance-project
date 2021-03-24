@@ -1,6 +1,6 @@
 # Performance Challenge
 
-Todoist API - Performance Test with Artillery and Faker.js plugin.
+Todoist API - Performance Test with Artillery and Faker.js.
 
 The purpose of these tests involves the API task module of the Todoist website. The tests were done on the following scenarios:
 
