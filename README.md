@@ -20,9 +20,9 @@ Download the zip, unzipped the content, open your favorite IDE and open the proj
 npm install artillery
 ```
 
-Also, install the faker.js plugin:
+Also, install faker.js:
 ```
-npm install artillery-plugin-faker
+npm install faker
 ```
 
 Don't forget to export your personal token from the Todoist app. Once you have your token, just type in the terminal:
